@@ -1,7 +1,8 @@
 module Main (main) where
 
+import Control.Applicative ((<|>))
 import Data.List (tails)
-import Data.Maybe (isJust, mapMaybe)
+import Data.Maybe (mapMaybe)
 
 main :: IO ()
 main = do
@@ -35,10 +36,10 @@ startsWithNum ('9' : _) = Just 9
 startsWithNum _ = Nothing
 
 firstNum :: [Char] -> Int
-firstNum = head . mapMaybe (\s -> if isJust (startsWithNumStr s) then startsWithNumStr s else startsWithNum s) . tails
+firstNum = head . mapMaybe (\s -> startsWithNumStr s <|> startsWithNum s) . tails
 
 lastNum :: [Char] -> Int
-lastNum = head . mapMaybe (\s -> if isJust (startsWithNumStr s) then startsWithNumStr s else startsWithNum s) . reverse . tails
+lastNum = head . mapMaybe (\s -> startsWithNumStr s <|> startsWithNum s) . reverse . tails
 
 toNumber :: [Char] -> Int
 toNumber s = 10 * firstNum s + lastNum s
