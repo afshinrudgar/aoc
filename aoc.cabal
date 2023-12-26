@@ -212,3 +212,33 @@ executable a6p2
                        -Wmissing-home-modules
                        -Wpartial-fields
                        -Wredundant-constraints
+
+executable a7p1
+  hs-source-dirs:      src
+  main-is:             a7p1.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+
+executable a7p2
+  hs-source-dirs:      src
+  main-is:             a7p2.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
