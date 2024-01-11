@@ -1,4 +1,4 @@
-import Data.Char (isDigit)
+import           Data.Char (isDigit)
 
 main :: IO ()
 main = do
@@ -25,9 +25,9 @@ readAllSlots :: [String] -> [Slot]
 readAllSlots xs = concatMap (\(lnum, line) -> readSlots lnum 1 line) $ zip [1 ..] xs
 
 symbolPositions :: [Slot] -> [Position]
-symbolPositions [] = []
+symbolPositions []                    = []
 symbolPositions (SymbolSlot pos : xs) = pos : symbolPositions xs
-symbolPositions (_ : xs) = symbolPositions xs
+symbolPositions (_ : xs)              = symbolPositions xs
 
 isAdjacent :: Position -> Position -> Bool
 isAdjacent (l1, s1, e1) (l2, s2, e2)

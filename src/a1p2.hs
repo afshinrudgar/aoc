@@ -1,8 +1,8 @@
 module Main (main) where
 
-import Control.Applicative ((<|>))
-import Data.List (tails)
-import Data.Maybe (mapMaybe)
+import           Control.Applicative ((<|>))
+import           Data.List           (tails)
+import           Data.Maybe          (mapMaybe)
 
 main :: IO ()
 main = do
@@ -12,16 +12,16 @@ solve :: [String] -> Int
 solve = sum . map toNumber
 
 startsWithNumStr :: [Char] -> Maybe Int
-startsWithNumStr ('o' : 'n' : 'e' : _) = Just 1
-startsWithNumStr ('t' : 'w' : 'o' : _) = Just 2
+startsWithNumStr ('o' : 'n' : 'e' : _)             = Just 1
+startsWithNumStr ('t' : 'w' : 'o' : _)             = Just 2
 startsWithNumStr ('t' : 'h' : 'r' : 'e' : 'e' : _) = Just 3
-startsWithNumStr ('f' : 'o' : 'u' : 'r' : _) = Just 4
-startsWithNumStr ('f' : 'i' : 'v' : 'e' : _) = Just 5
-startsWithNumStr ('s' : 'i' : 'x' : _) = Just 6
+startsWithNumStr ('f' : 'o' : 'u' : 'r' : _)       = Just 4
+startsWithNumStr ('f' : 'i' : 'v' : 'e' : _)       = Just 5
+startsWithNumStr ('s' : 'i' : 'x' : _)             = Just 6
 startsWithNumStr ('s' : 'e' : 'v' : 'e' : 'n' : _) = Just 7
 startsWithNumStr ('e' : 'i' : 'g' : 'h' : 't' : _) = Just 8
-startsWithNumStr ('n' : 'i' : 'n' : 'e' : _) = Just 9
-startsWithNumStr _ = Nothing
+startsWithNumStr ('n' : 'i' : 'n' : 'e' : _)       = Just 9
+startsWithNumStr _                                 = Nothing
 
 startsWithNum :: [Char] -> Maybe Int
 startsWithNum ('1' : _) = Just 1
@@ -33,7 +33,7 @@ startsWithNum ('6' : _) = Just 6
 startsWithNum ('7' : _) = Just 7
 startsWithNum ('8' : _) = Just 8
 startsWithNum ('9' : _) = Just 9
-startsWithNum _ = Nothing
+startsWithNum _         = Nothing
 
 firstNum :: [Char] -> Int
 firstNum = head . mapMaybe (\s -> startsWithNumStr s <|> startsWithNum s) . tails

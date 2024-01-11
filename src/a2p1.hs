@@ -3,8 +3,8 @@
 
 module Main (main) where
 
-import Data.Char (isSpace)
-import Data.List (isSuffixOf)
+import           Data.Char (isSpace)
+import           Data.List (isSuffixOf)
 
 -- Read a file line by line
 readLines :: FilePath -> IO [String]

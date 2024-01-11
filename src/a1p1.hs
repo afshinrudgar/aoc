@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Data.Char (digitToInt, isDigit)
+import           Data.Char (digitToInt, isDigit)
 
 main :: IO ()
 main = do

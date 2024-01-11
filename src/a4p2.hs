@@ -3,7 +3,7 @@
 
 module Main where
 
-import Data.Char (isSpace)
+import           Data.Char (isSpace)
 
 main :: IO ()
 main = do

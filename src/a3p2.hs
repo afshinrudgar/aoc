@@ -2,8 +2,8 @@
 
 module Main where
 
-import Data.Char (isDigit)
-import Data.Maybe (mapMaybe)
+import           Data.Char  (isDigit)
+import           Data.Maybe (mapMaybe)
 
 main :: IO ()
 main = do
@@ -30,9 +30,9 @@ readAllSlots :: [String] -> [Slot]
 readAllSlots xs = concatMap (\(lnum, line) -> readSlots lnum 1 line) $ zip [1 ..] xs
 
 partPositions :: [Slot] -> [Position]
-partPositions [] = []
+partPositions []                    = []
 partPositions (PartSlot _ pos : xs) = pos : partPositions xs
-partPositions (_ : xs) = partPositions xs
+partPositions (_ : xs)              = partPositions xs
 
 isAdjacent :: Position -> Position -> Bool
 isAdjacent (l1, s1, e1) (l2, s2, e2)

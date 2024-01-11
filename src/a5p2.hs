@@ -1,8 +1,8 @@
 module Main where
 
-import Data.Char (isSpace)
-import Data.List (sortBy, sortOn)
-import Debug.Trace (trace)
+import           Data.Char   (isSpace)
+import           Data.List   (sortBy, sortOn)
+import           Debug.Trace (trace)
 
 main :: IO ()
 main = do
@@ -46,9 +46,9 @@ splitList n l =
     foldr
       ( \el cont (countAcc, listAcc) ->
           case listAcc of
-            [] -> cont (countAcc, [[el]])
+            []                     -> cont (countAcc, [[el]])
             (h : t) | countAcc < n -> cont (countAcc + 1, (el : h) : t)
-            (h : t) -> cont (1, [el] : (h : t))
+            (h : t)                -> cont (1, [el] : (h : t))
       )
       id
       l
@@ -72,15 +72,15 @@ parseRange s = ((src, offset), (dest, offset))
     offset = read (parts !! 2)
 
 parseName :: String -> Name
-parseName "seed" = Seed
-parseName "soil" = Soil
-parseName "fertilizer" = Fertilizer
-parseName "water" = Water
-parseName "light" = Light
+parseName "seed"        = Seed
+parseName "soil"        = Soil
+parseName "fertilizer"  = Fertilizer
+parseName "water"       = Water
+parseName "light"       = Light
 parseName "temperature" = Temperature
-parseName "humidity" = Humidity
-parseName "location" = Location
-parseName _ = error "Unknown name"
+parseName "humidity"    = Humidity
+parseName "location"    = Location
+parseName _             = error "Unknown name"
 
 parseMap :: [String] -> Map'
 parseMap ss = (mapFrom, mapTo, ranges)

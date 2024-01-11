@@ -1,6 +1,6 @@
 module Main where
 
-import Data.List (sortOn)
+import           Data.List (sortOn)
 
 main :: IO ()
 main = do
@@ -32,7 +32,7 @@ parseCard 'J' = J
 parseCard 'Q' = Q
 parseCard 'K' = K
 parseCard 'A' = A
-parseCard _ = error "Invalid card"
+parseCard _   = error "Invalid card"
 
 getHandType :: Set -> HandType
 getHandType (c1, c2, c3, c4, c5)

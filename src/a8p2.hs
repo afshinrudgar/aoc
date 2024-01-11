@@ -1,7 +1,7 @@
 module Main where
 
-import Data.Char (isSpace)
-import Data.Map (Map, fromList, keys, (!))
+import           Data.Char (isSpace)
+import           Data.Map  (Map, fromList, keys, (!))
 
 main :: IO ()
 main = do
@@ -14,7 +14,7 @@ data WastelandMap = WastelandMap {lefts :: Map String String, rights :: Map Stri
 parseDirection :: Char -> Direction
 parseDirection 'L' = L
 parseDirection 'R' = R
-parseDirection _ = error "Invalid direction"
+parseDirection _   = error "Invalid direction"
 
 parseDirections :: String -> [Direction]
 parseDirections = map parseDirection
