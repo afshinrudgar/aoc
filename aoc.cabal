@@ -307,3 +307,37 @@ executable a9p2
                        -Wpartial-fields
                        -Wredundant-constraints
 
+executable a10p1
+  hs-source-dirs:      src
+  main-is:             a10p1.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       containers >= 0.6 && < 0.7,
+                       safe >= 0.3.19 && < 0.4
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+
+executable a10p2
+  hs-source-dirs:      src
+  main-is:             a10p2.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       containers >= 0.6 && < 0.7,
+                       safe >= 0.3.19 && < 0.4
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+
