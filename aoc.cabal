@@ -371,4 +371,36 @@ executable a11p2
                        -Wpartial-fields
                        -Wredundant-constraints
 
+executable a12p1
+  hs-source-dirs:      src
+  main-is:             a12p1.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       safe >= 0.3.19 && < 0.4
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+
+executable a12p2
+  hs-source-dirs:      src
+  main-is:             a12p2.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       containers >= 0.6 && < 0.7,
+                       safe >= 0.3.19 && < 0.4
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
 
