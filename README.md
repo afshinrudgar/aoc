@@ -1,2 +1,2 @@
 # aoc
-The advent of code solutions year 2023
+The advent of code solutions year 2024
