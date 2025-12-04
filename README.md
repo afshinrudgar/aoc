@@ -1,2 +1,2 @@
 # aoc
-The advent of code solutions year <INSERT YEAR HERE>
+The advent of code solutions year 2025
