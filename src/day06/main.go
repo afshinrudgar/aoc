@@ -6,6 +6,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/afshinrudgar/aoc/src/day06/lib"
 )
 
 func main() {
@@ -31,98 +33,36 @@ func main() {
 		lines = append(lines, line)
 	}
 
-	fmt.Println("PART 1:", solve1(lines))
-	fmt.Println("PART 2:", solve2(lines))
+	fmt.Println("PART 1:", solve(lines, readInput1))
+	fmt.Println("PART 2:", solve(lines, readInput2))
 }
 
-func readInput1(lines []string) ([][]int64, []string) {
-	operands := make([][]int64, 0)
-	var ops []string
-	for _, s := range lines {
-		line := make([]int64, 0)
-		for _, part := range strings.Fields(s) {
+func readInput1(lines []string) []lib.Problem {
+	rows := make([][]int64, len(lines)-1)
+	ops := strings.Fields(lines[len(lines)-1])
+	for i, line := range lines[:len(lines)-1] {
+		nums := make([]int64, 0)
+		for _, part := range strings.Fields(line) {
 			var n int64
 			n, err := strconv.ParseInt(part, 10, 64)
 			if err != nil {
 				break
 			}
-			line = append(line, n)
+			nums = append(nums, n)
 		}
-		if len(line) == 0 {
-			ops = strings.Fields(strings.TrimSpace(s))
-			break
-		}
-		operands = append(operands, line)
+		rows[i] = nums
 	}
-	return operands, ops
-}
-
-func solve1(lines []string) int64 {
-	operands, ops := readInput1(lines)
-	res := make([]int64, len(operands[0]))
+	res := make([]lib.Problem, 0)
 	for i, op := range ops {
-		switch op {
-		case "+":
-			sum := int64(0)
-			for _, line := range operands {
-				sum += line[i]
-			}
-			res[i] = sum
-			i++
-		case "*":
-			prod := int64(1)
-			for _, line := range operands {
-				prod *= line[i]
-			}
-			res[i] = prod
-			i++
-		default:
-			continue
+		operands := make([]int64, 0)
+		for _, row := range rows {
+			operands = append(operands, row[i])
 		}
+		res = append(res, lib.New(operands, op))
 	}
-
-	grandTotal := int64(0)
-	for _, v := range res {
-		grandTotal += v
-	}
-	return grandTotal
+	return res
 }
-
-type Problem struct {
-	operands []int64
-	op       string
-}
-
-func (p Problem) calculate() int64 {
-	switch p.op {
-	case "+":
-		sum := int64(0)
-		for _, operand := range p.operands {
-			sum += operand
-		}
-		return sum
-	case "*":
-		prod := int64(1)
-		for _, operand := range p.operands {
-			prod *= operand
-		}
-		return prod
-	default:
-		panic("invalid operator")
-	}
-}
-
-type Problems []Problem
-
-func (ps Problems) grandTotal() int64 {
-	total := int64(0)
-	for _, p := range ps {
-		total += p.calculate()
-	}
-	return total
-}
-
-func readInput2(lines []string) Problems {
+func readInput2(lines []string) []lib.Problem {
 	ops := strings.Fields(lines[len(lines)-1])
 
 	limit := 0
@@ -130,7 +70,7 @@ func readInput2(lines []string) Problems {
 		limit = max(limit, len(line))
 	}
 
-	res := make([]Problem, 0)
+	res := make([]lib.Problem, 0)
 	i := 0
 	operands := make([]int64, 0)
 	for j := 0; j < limit; j++ {
@@ -142,7 +82,7 @@ func readInput2(lines []string) Problems {
 			}
 		}
 		if num == 0 {
-			res = append(res, Problem{operands: operands, op: ops[i]})
+			res = append(res, lib.New(operands, ops[i]))
 			operands = make([]int64, 0)
 			i++
 		} else {
@@ -152,7 +92,7 @@ func readInput2(lines []string) Problems {
 	return res
 }
 
-func solve2(lines []string) int64 {
-	problems := readInput2(lines)
-	return problems.grandTotal()
+func solve(lines []string, fnc func([]string) []lib.Problem) int64 {
+	problems := fnc(lines)
+	return lib.GrandTotal(problems)
 }
